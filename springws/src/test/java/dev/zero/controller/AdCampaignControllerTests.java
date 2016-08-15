@@ -33,47 +33,17 @@ public class AdCampaignControllerTests {
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
-	/*
-	 * @Test public void noParamGreetingShouldReturnDefaultMessage() throws
-	 * Exception {
-	 * 
-	 * this.mockMvc.perform(get("/greeting")) .andDo(print())
-	 * .andExpect(status().isOk()) .andExpect(jsonPath("$.content").value(
-	 * "Hello, World!")); }
-	 * 
-	 * @Test public void paramGreetingShouldReturnTailoredMessage() throws
-	 * Exception {
-	 * 
-	 * this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
-	 * .andDo(print()) .andExpect(status().isOk())
-	 * .andExpect(jsonPath("$.content").value("Hello, Spring Community!")); }
-	 * 
-	 * @Test public void sendPostMessage() throws Exception { String requestBody
-	 * = new String("{ \"id\":\"323\",\"content\":\"Hello World!\"}");
-	 * this.mockMvc.perform(MockMvcRequestBuilders .post("/greeting")
-	 * .content(requestBody) .contentType(MediaType.APPLICATION_JSON))
-	 * .andExpect(status().isOk());
-	 * 
-	 * 
-	 * }
-	 */
+	
 
 	@Test
 	public void testPostAdForPartnerId() throws Exception {
-		// String requestBody = new String("{ \"id\":\"323\",\"content\":\"Hello
-		// World!\"}");
 		String requestBody = new String("{" + "\"partner_id\": \"partner1\"," + "\"duration\": \"253500\","
 				+ "\"ad_content\": \"string_of_content_to_display_as_ad\"" + "}");
-		this.mockMvc
+	    this.mockMvc
 				.perform(
 						MockMvcRequestBuilders.post("/ad").content(requestBody).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isCreated());
-		// .andReturn();
-		/*
-		 * String content = result.getResponse().getContentAsString();
-		 * assertEquals("{\"statusCode\":"400","message":"Ad Camplain exists for
-		 * the partner!"}");
-		 */
+	
 
 	}
 
